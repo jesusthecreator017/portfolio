@@ -23,7 +23,7 @@ const Hero = () => {
         alt="Jesus Gonzalez"
         width={256}
         height={256}
-        className="hidden h-64 w-64 shrink-0 rounded-2xl object-cover md:block"
+        className="hidden h-64 w-64 shrink-0 rounded-2xl object-cover lg:block"
       />
     </section>
   );

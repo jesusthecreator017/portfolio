@@ -51,7 +51,7 @@ export default function Home() {
           color="#0d9488"
         />
       </div>
-      <div className="mx-auto mt-8 grid max-w-5xl grid-cols-2 gap-6 px-8">
+      <div className="mx-auto mt-8 grid max-w-5xl grid-cols-1 gap-6 px-8 md:grid-cols-2">
         {projects.map((project, index) => (
           <ProjectCard
             key={index}
