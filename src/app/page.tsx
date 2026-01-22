@@ -42,7 +42,7 @@ export default function Home() {
   return (
     <div>
       <Hero />
-      <div className="mx-auto -mt-12 max-w-5xl px-8">
+      <div className="mx-auto mt-4 max-w-5xl px-8 md:-mt-8">
         <InteractiveVectorField
           height={200}
           step={0.5}
