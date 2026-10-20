@@ -1,10 +1,8 @@
 import Link from 'next/link';
 import FlowField from '@/components/FlowField';
-import { PostCard } from '@/components/PostCard';
 import { Section } from '@/components/Section';
 import { Chips, Kv, Project, Spec } from '@/components/blocks';
 import { delay } from '@/lib/delay';
-import { getPosts } from '@/lib/posts';
 
 const LANGS = [
   'Python',
@@ -51,8 +49,6 @@ const xpTitle =
   'text-[1.375rem] leading-[1.2] font-semibold tracking-[-.015em]';
 
 export default function Home() {
-  const posts = getPosts().slice(0, 3);
-
   return (
     <main id="main">
       <section
@@ -310,31 +306,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <Section id="writing" n="05" title="Writing">
-        {posts.length ? (
-          <div className="grid gap-4 min-[900px]:grid-cols-[1.5fr_1fr_1fr]">
-            {posts.map((p, i) => (
-              <PostCard
-                key={p.slug}
-                as="h3"
-                post={p}
-                lead={i === 0}
-                d={i ? `${i * 0.06}s` : undefined}
-              />
-            ))}
-          </div>
-        ) : (
-          <p className="rv border border-line p-[22px]">No posts yet.</p>
-        )}
-        <Link
-          href="/blog"
-          className="rv mt-6 inline-flex min-h-11 items-center mono text-[.8125rem] underline underline-offset-4"
-        >
-          All writing -&gt;
-        </Link>
-      </Section>
-
-      <Section id="contact" n="06" title="Contact">
+      <Section id="contact" n="05" title="Contact">
         <div className="grid gap-10 min-[960px]:grid-cols-[7fr_5fr] min-[960px]:items-start min-[960px]:gap-16">
           <div className="rv">
             <a

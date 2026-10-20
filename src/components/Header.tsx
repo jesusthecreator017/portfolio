@@ -10,8 +10,7 @@ const ITEMS = [
   { n: '02', label: 'Experience', href: '/#experience' },
   { n: '03', label: 'Skills', href: '/#skills' },
   { n: '04', label: 'About', href: '/#about' },
-  { n: '05', label: 'Writing', href: '/blog' },
-  { n: '06', label: 'Contact', href: '/#contact' },
+  { n: '05', label: 'Contact', href: '/#contact' },
 ];
 
 const btn =
@@ -47,10 +46,7 @@ export default function Header() {
     return () => io.disconnect();
   }, [pathname]);
 
-  const current = (href: string) =>
-    href === '/blog'
-      ? pathname.startsWith('/blog')
-      : pathname === '/' && href === `/#${active}`;
+  const current = (href: string) => pathname === '/' && href === `/#${active}`;
 
   return (
     <header className="bar sticky top-0 z-20 border-b border-hair bg-bg">
