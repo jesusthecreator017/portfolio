@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Personal portfolio site for Jesus Gonzalez, built with Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4, and an MDX blog. Deployed on Vercel.
+Personal portfolio site for Jesus Gonzalez, built with Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4. Deployed on Vercel.
 
 ## Commands
 
@@ -22,20 +22,19 @@ Husky runs `lint-staged` on commit, which auto-fixes ESLint and Prettier on stag
 
 ## Architecture
 
-Portfolio app using Next.js App Router. All source code lives under `src/`; blog posts live in `content/posts/`.
+Portfolio app using Next.js App Router. All source code lives under `src/`.
 
-- `src/app/` — App Router: `layout.tsx` (fonts, ThemeProvider, header, footer), `page.tsx` (home: hero + 6 sections), `blog/` (index and `[slug]`), `not-found.tsx`, `globals.css`
+- `src/app/` — App Router: `layout.tsx` (fonts, ThemeProvider, header, footer), `page.tsx` (home: hero + 5 sections), `not-found.tsx`, `globals.css`
 - `src/components/` — `Header` (client: nav, mobile menu, scroll spy, theme toggle), `FlowField` (client: hero canvas), `Reveal` (client: scroll reveal), plus server components (`Section`, `SectionHead`, `PostCard`, `blocks.tsx`)
-- `src/lib/posts.ts` — reads `content/posts/*.mdx` (gray-matter frontmatter); `src/lib/delay.ts` — `--d` stagger helper
+- `src/lib/delay.ts` — `--d` stagger helper
 - `public/resume.pdf` — lowercase name on purpose (Vercel is case-sensitive)
 
 The `@/*` path alias maps to `./src/*`.
 
 ## Key Patterns
 
-- **Tailwind v4 + tokens**: palette lives as CSS vars in `globals.css` (`:root` = dark, `[data-theme='light']` overrides) and is exposed via `@theme inline` (`bg-bg`, `text-fg`, `text-muted`, `border-line`, ...). Use arbitrary rem sizes (`text-[.9375rem]`), not `text-sm`-style names, to keep the design's line-heights. Repeated composites are `@utility` blocks (`wrap`, `mono`, `label`, `hov`, `ld`). Plain CSS in `globals.css` only for what Tailwind cannot express (blueprint grid, canvas mask, scroll-timeline bar, keyframes, `.rv` reveal, `.prose`)
+- **Tailwind v4 + tokens**: palette lives as CSS vars in `globals.css` (`:root` = dark, `[data-theme='light']` overrides) and is exposed via `@theme inline` (`bg-bg`, `text-fg`, `text-muted`, `border-line`, ...). Use arbitrary rem sizes (`text-[.9375rem]`), not `text-sm`-style names, to keep the design's line-heights. Repeated composites are `@utility` blocks (`wrap`, `mono`, `label`, `hov`, `ld`). Plain CSS in `globals.css` only for what Tailwind cannot express (blueprint grid, canvas mask, scroll-timeline bar, keyframes, `.rv` reveal)
 - **Theming**: `next-themes` with `attribute="data-theme"`, dark default, `enableSystem={false}`, `storageKey="jg-theme"`. Never use a `.dark` class; the Tailwind `dark:` variant is a `@custom-variant` on `[data-theme='dark']`
-- **Blog (MDX)**: no Next MDX plugin. `blog/[slug]/page.tsx` calls `@mdx-js/mdx` `evaluate()` in a server component; routes are fully static (`generateStaticParams`, `dynamicParams = false`). Posts need frontmatter `title`, `date`, `summary`, `tags` (validated at build in `posts.ts`). Keep posts plain markdown (no imported components)
 - **Reveal**: `.rv` elements are hidden only under `html.js` (set by an inline head script); `Reveal` adds `.in`
 - **Motion**: everything must respect `prefers-reduced-motion` (FlowField draws one static frame)
 
