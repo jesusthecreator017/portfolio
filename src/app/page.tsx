@@ -112,10 +112,6 @@ export default function Home() {
             />
           </aside>
         </div>
-        <p className="fig absolute right-[var(--gutter)] bottom-3.5 z-[2] m-0 max-w-[calc(100%-2*var(--gutter))] border border-hair bg-bg px-2 py-1 label">
-          FIG.01 Flow field
-          <span className="motion-reduce:hidden">, move cursor to perturb</span>
-        </p>
       </section>
 
       <Section id="projects" n="01" title="Projects">
@@ -282,15 +278,13 @@ export default function Home() {
       <Section id="about" n="04" title="About">
         <div className="grid gap-8 min-[960px]:grid-cols-[7fr_5fr] min-[960px]:items-start min-[960px]:gap-16">
           <div className="rv">
-            {/* TODO(user): replace this placeholder About copy with your own text, then remove the tag. */}
-            <span className="mb-3.5 inline-block border border-dashed border-line px-[9px] py-[5px] label">
-              Placeholder copy
-            </span>
             <p className="max-w-[58ch] text-[1.1875rem] leading-[1.6]">
               I study computer science at UCF and like working close to the
-              hardware and close to the user: firmware in Rust, production web
-              interfaces, and GPU rendering in the browser. Replace this block
-              with two or three sentences in your own voice.
+              hardware and close to the user. Graphics programming is my
+              favorite corner of it, and I build a lot of personal software
+              tooling to scratch my own itches. Outside of class and work I run
+              a homelab and jailbreak devices, mostly to see how they work
+              underneath.
             </p>
           </div>
           <Kv
